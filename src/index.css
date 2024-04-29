@@ -14,11 +14,6 @@ main{
   justify-content: start;
 }
 
-a{
-  text-decoration: none;
-  color:rgba(0, 0, 0, 1);
-}
-
 li{
   list-style: none;
 }
@@ -126,4 +121,7 @@ h2 button{
   line-height: 29px;
 }
 
-
+.main-window-section > button{
+  border: 0;
+  background-color: #FDFDFF;
+}

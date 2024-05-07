@@ -7,7 +7,7 @@ function getLocation(){
     return {
         id: locationId(),
         name: getRandomArrayElement(LOCATIONS)
-    }
+    };
 }
 
 export {getLocation};

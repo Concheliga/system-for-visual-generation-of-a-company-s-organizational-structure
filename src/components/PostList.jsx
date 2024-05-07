@@ -1,44 +1,13 @@
 import Button from "./Button";
+import PostModel from "../models/post-model";
 
-export default function LocationList() {
+export default function PostList() {
+    let postModel = new PostModel();
+    let posts = postModel.posts
+    let postList = posts.map((post)=><li className="subdivision" key={post.id}><Button>{post.name}</Button></li>)
     return (
-    <ul className="main-window">
-        <li className="lockation">
-            <h2 className="location-header"><Button>Должность 1</Button></h2>
-            <ul className="subdivisions">
-                <li className="subdivision"><Button>ФИО 1</Button></li>
-                <li className="subdivision"><Button>ФИО 2</Button></li>
-                <li className="subdivision"><Button>ФИО 3</Button></li>
-                <li className="subdivision"><Button>ФИО 4</Button></li>
-            </ul>
-        </li>
-        <li className="lockation">
-            <h2 className="location-header"><Button>Должность 2</Button></h2>
-            <ul className="subdivisions">
-                <li className="subdivision"><Button>ФИО 1</Button></li>
-                <li className="subdivision"><Button>ФИО 2</Button></li>
-                <li className="subdivision"><Button>ФИО 3</Button></li>
-                <li className="subdivision"><Button>ФИО 4</Button></li>
-            </ul>
-        </li>
-        <li className="lockation">
-            <h2 className="location-header"><Button>Должность 3</Button></h2>
-            <ul className="subdivisions">
-                <li className="subdivision"><Button>ФИО 1</Button></li>
-                <li className="subdivision"><Button>ФИО 2</Button></li>
-                <li className="subdivision"><Button>ФИО 3</Button></li>
-                <li className="subdivision"><Button>ФИО 4</Button></li>
-            </ul>
-        </li>
-        <li className="lockation">
-            <h2 className="location-header"><Button>Должность 4</Button></h2>
-            <ul className="subdivisions">
-                <li className="subdivision"><Button>ФИО 1</Button></li>
-                <li className="subdivision"><Button>ФИО 2</Button></li>
-                <li className="subdivision"><Button>ФИО 3</Button></li>
-                <li className="subdivision"><Button>ФИО 4</Button></li>
-            </ul>
-        </li>
-    </ul>
+        <ul className="main-window">
+            {postList}
+        </ul>
     )
 }

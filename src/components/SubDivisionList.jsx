@@ -1,44 +1,13 @@
 import Button from "./Button";
+import SubDivisionModel from "../models/sub-division-model";
 
 export default function SubDivisionList() {
+    let subDivisionModel = new SubDivisionModel();
+    let subDivisions = subDivisionModel.subDivisions
+    let subDivisionList = subDivisions.map((subDivision)=><li className="subdivision" key={subDivision.id}><Button>{subDivision.name}</Button></li>)
     return (
-    <ul className="main-window">
-        <li className="lockation">
-            <h2 className="location-header"><Button>Подразделение 1</Button></h2>
-            <ul className="subdivisions">
-                <li className="subdivision"><Button>Отдел 1</Button></li>
-                <li className="subdivision"><Button>Отдел 2</Button></li>
-                <li className="subdivision"><Button>Отдел 3</Button></li>
-                <li className="subdivision"><Button>Отдел 4</Button></li>
-            </ul>
-        </li>
-        <li className="lockation">
-            <h2 className="location-header"><Button>Подразделение 2</Button></h2>
-            <ul className="subdivisions">
-                <li className="subdivision"><Button>Отдел 1</Button></li>
-                <li className="subdivision"><Button>Отдел 2</Button></li>
-                <li className="subdivision"><Button>Отдел 3</Button></li>
-                <li className="subdivision"><Button>Отдел 4</Button></li>
-            </ul>
-        </li>
-        <li className="lockation">
-            <h2 className="location-header"><Button>Подразделение 3</Button></h2>
-            <ul className="subdivisions">
-                <li className="subdivision"><Button>Отдел 1</Button></li>
-                <li className="subdivision"><Button>Отдел 2</Button></li>
-                <li className="subdivision"><Button>Отдел 3</Button></li>
-                <li className="subdivision"><Button>Отдел 4</Button></li>
-            </ul>
-        </li>
-        <li className="lockation">
-            <h2 className="location-header"><Button>Подразделение 4</Button></h2>
-            <ul className="subdivisions">
-                <li className="subdivision"><Button>Отдел 1</Button></li>
-                <li className="subdivision"><Button>Отдел 2</Button></li>
-                <li className="subdivision"><Button>Отдел 3</Button></li>
-                <li className="subdivision"><Button>Отдел 4</Button></li>
-            </ul>
-        </li>
-    </ul>
+        <ul className="main-window">
+            {subDivisionList}
+        </ul>
     )
 }

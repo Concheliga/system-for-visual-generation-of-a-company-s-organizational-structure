@@ -1,44 +1,13 @@
 import Button from "./Button";
+import GroupModel from "../models/group-model";
 
-export default function LocationList() {
+export default function GroupList() {
+    let groupModel = new GroupModel();
+    let groups = groupModel.groups
+    let groupList = groups.map((group)=><li className="subdivision" key={group.id}><Button>{group.name}</Button></li>)
     return (
-    <ul className="main-window">
-        <li className="lockation">
-            <h2 className="location-header"><Button>Группа 1</Button></h2>
-            <ul className="subdivisions">
-                <li className="subdivision"><Button>Должность 1</Button></li>
-                <li className="subdivision"><Button>Должность 2</Button></li>
-                <li className="subdivision"><Button>Должность 3</Button></li>
-                <li className="subdivision"><Button>Должность 4</Button></li>
-            </ul>
-        </li>
-        <li className="lockation">
-            <h2 className="location-header"><Button>Группа 2</Button></h2>
-            <ul className="subdivisions">
-                <li className="subdivision"><Button>Должность 1</Button></li>
-                <li className="subdivision"><Button>Должность 2</Button></li>
-                <li className="subdivision"><Button>Должность 3</Button></li>
-                <li className="subdivision"><Button>Должность 4</Button></li>
-            </ul>
-        </li>
-        <li className="lockation">
-            <h2 className="location-header"><Button>Группа 3</Button></h2>
-            <ul className="subdivisions">
-                <li className="subdivision"><Button>Должность 1</Button></li>
-                <li className="subdivision"><Button>Должность 2</Button></li>
-                <li className="subdivision"><Button>Должность 3</Button></li>
-                <li className="subdivision"><Button>Должность 4</Button></li>
-            </ul>
-        </li>
-        <li className="lockation">
-            <h2 className="location-header"><Button>Группа 4</Button></h2>
-            <ul className="subdivisions">
-                <li className="subdivision"><Button>Должность 1</Button></li>
-                <li className="subdivision"><Button>Должность 2</Button></li>
-                <li className="subdivision"><Button>Должность 3</Button></li>
-                <li className="subdivision"><Button>Должность 4</Button></li>
-            </ul>
-        </li>
-    </ul>
+        <ul className="main-window">
+            {groupList}
+        </ul>
     )
 }

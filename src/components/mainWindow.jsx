@@ -6,6 +6,7 @@ import DivisionList from './DivisionList'
 import GroupList from './GroupList'
 import PostList from './PostList'
 import Button from './Button'
+import NameList from './NameList'
 
 export default function MainWindow({ tab, tabHistory, onChange }){
     return(
@@ -16,6 +17,7 @@ export default function MainWindow({ tab, tabHistory, onChange }){
             {tab === "DivisionList" && (<DivisionList />)}
             {tab === "GroupList" && (<GroupList />)}
             {tab === "PostList" && (<PostList />)}
+            {tab === "NameList" && (<NameList />)}
             <Button onClick={()=>onChange(tabHistory)}><img src={arrow} alt="Стрелка назад" /></Button>
         </section>
     )

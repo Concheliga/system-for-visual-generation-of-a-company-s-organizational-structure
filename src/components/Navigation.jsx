@@ -10,7 +10,7 @@ export default function Navigation({ onChange, tabHistory }){
                 <li className="navigation-item"><Button onClick={()=>onChange('DivisionList', tabHistory)}>Отдел</Button></li>
                 <li className="navigation-item"><Button onClick={()=>onChange('GroupList', tabHistory)}>Группа</Button></li>
                 <li className="navigation-item"><Button onClick={()=>onChange('PostList', tabHistory)}>Должность</Button></li>
-                <li className="navigation-item"><Button>ФИО</Button></li>
+                <li className="navigation-item"><Button onClick={()=>onChange('NameList', tabHistory)}>ФИО</Button></li>
             </ul>
         </nav>
     )

@@ -51,16 +51,14 @@ button, .lockation{
 }
 
 .subdivision{
-  width: 172px;
-  margin-left: 68px;
-  margin-bottom: 35px;
+  width: 210px;
   border: 2px solid rgba(16, 32, 181, 1);
   border-radius: 50px;
   height: 90px;
 }
 
 .subdivision button{
-  width: 172px;
+  width: 210px;
   border-radius: 50px;
   height: 90px;
   border: 0;
@@ -124,4 +122,26 @@ h2 button{
 .main-window-section > button{
   border: 0;
   background-color: #FDFDFF;
+}
+
+dialog {
+  margin-right: 0;
+  padding: 0;
+  border: 0;
+}
+
+.navigation-button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  background-color: #FDFDFF;
+}
+
+body div{
+  position: relative;
+}
+
+.navigation-button img{
+  width: 30px;
 }

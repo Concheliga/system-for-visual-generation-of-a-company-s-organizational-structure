@@ -13,23 +13,24 @@ export default function App() {
     isNavigationOpen?setIsNavigationOpen(false):setIsNavigationOpen(true)
   }
 
+  function backButtonChange(tabHistory){
+    if (tabHistory.length >= 2){
+      setTab(tabHistory[tabHistory.length - 2])
+      setTabHistory(tabHistory.slice(0, tabHistory.length - 1))
+    }
+  }
+
+  function navigationChange(current, tabHistory){
+    tabHistory.push(current)
+    setTabHistory(tabHistory)
+    setTab(current)
+    }
+
   return (
     <>
       <main>
-          <Navigation tabHistory={tabHistory} onChange={(current, tabHistory)=>{
-            tabHistory.push(current)
-            setTabHistory(tabHistory)
-            console.log(tabHistory)
-            setTab(current)
-            }}
-            open={isNavigationOpen} />
-          <MainWindow tab={tab} tabHistory={tabHistory} onChange={(tabHistory)=>{
-            console.log(tabHistory)
-            if (tabHistory.length >= 2){
-              setTab(tabHistory[tabHistory.length - 2])
-              setTabHistory(tabHistory.slice(0, tabHistory.length - 1))
-            }
-            }}/>
+          <Navigation tabHistory={tabHistory} onChange={navigationChange} open={isNavigationOpen} />
+          <MainWindow tab={tab} tabHistory={tabHistory} onChange={backButtonChange}/>
       </main>
       <Button className={"navigation-button"} onClick={navigationButtonAction}><img src={navButton} alt="кнопка навигиции"></img></Button>
     </>

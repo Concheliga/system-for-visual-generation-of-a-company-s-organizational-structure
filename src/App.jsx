@@ -6,7 +6,7 @@ import navButton from "/navButton.svg"
 
 export default function App() {
   const [tab, setTab] = useState("LocationList")
-  const [tabHistory, setTabHistory] = useState([])
+  const [tabHistory, setTabHistory] = useState(["LocationList"])
   const [isNavigationOpen, setIsNavigationOpen] = useState(false)
 
   function navigationButtonAction(){

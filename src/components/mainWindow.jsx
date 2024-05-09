@@ -21,7 +21,7 @@ const groupModel = new GroupModel()
 const postModel = new PostModel()
 const nameModel = new NameModel()
 
-export default function MainWindow({ tab, tabHistory, onChange }){
+export default function MainWindow({ tab, tabHistory, onChange, onButtonClick }){
     const [locationId, setLocationId] = useState(null)
     const [subDivisionId, setSubDivisionId] = useState(null)
     const [divisionId, setDivisionId] = useState(null)
@@ -31,12 +31,12 @@ export default function MainWindow({ tab, tabHistory, onChange }){
     return(
         <section className="main-window-section">
             <h1 className="path-header">Путь:</h1>
-            {tab === "LocationList" && (<LocationList locationModel={locationModel} setLocationId={setLocationId} />)}
-            {tab === "SubDivisionList" && (<SubDivisionList subDivisionModel={subDivisionModel} locationId={locationId} setSubDivisionId={setSubDivisionId} />)}
-            {tab === "DivisionList" && (<DivisionList divisionModel={divisionModel} subDivisionId={subDivisionId} setDivisionId={setDivisionId} />)}
-            {tab === "GroupList" && (<GroupList groupModel={groupModel} divisionId={divisionId} setGroupId={setGroupId} />)}
-            {tab === "PostList" && (<PostList postModel={postModel} groupId={groupId} setPostId={setPostId} />)}
-            {tab === "NameList" && (<NameList nameModel={nameModel} postId={postId} />)}
+            {tab === "LocationList" && (<LocationList locationModel={locationModel} setLocationId={setLocationId} onButtonClick={onButtonClick} tabHistory={tabHistory} />)}
+            {tab === "SubDivisionList" && (<SubDivisionList subDivisionModel={subDivisionModel} locationId={locationId} setSubDivisionId={setSubDivisionId} onButtonClick={onButtonClick} tabHistory={tabHistory} />)}
+            {tab === "DivisionList" && (<DivisionList divisionModel={divisionModel} subDivisionId={subDivisionId} setDivisionId={setDivisionId} locationId={locationId} onButtonClick={onButtonClick} tabHistory={tabHistory} />)}
+            {tab === "GroupList" && (<GroupList groupModel={groupModel} divisionId={divisionId} setGroupId={setGroupId} locationId={locationId} subDivisionId={subDivisionId} onButtonClick={onButtonClick} tabHistory={tabHistory} />)}
+            {tab === "PostList" && (<PostList postModel={postModel} groupId={groupId} setPostId={setPostId} locationId={locationId} subDivisionId={subDivisionId} divisionId={divisionId} onButtonClick={onButtonClick} tabHistory={tabHistory} />)}
+            {tab === "NameList" && (<NameList nameModel={nameModel} postId={postId} locationId={locationId} subDivisionId={subDivisionId} divisionId={divisionId} groupId={groupId} />)}
             <Button onClick={()=>onChange(tabHistory)}><img src={arrow} alt="Стрелка назад" /></Button>
         </section>
     )

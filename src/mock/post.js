@@ -7,10 +7,10 @@ function getPost(){
     return{
         id: postId(),
         name: getRandomArrayElement(POSTS),
-        locationId: getRandomNumber(1, 16),
-        subDivisionId: getRandomNumber(1, 16),
-        divisionId: getRandomNumber(1, 16),
-        groupId: getRandomNumber(1, 16)
+        locationId: getRandomNumber(1, 50),
+        subDivisionId: getRandomNumber(1, 50),
+        divisionId: getRandomNumber(1, 50),
+        groupId: getRandomNumber(1, 50)
     }
 }
 

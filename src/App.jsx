@@ -30,7 +30,7 @@ export default function App() {
     <>
       <main>
           <Navigation tabHistory={tabHistory} onChange={navigationChange} open={isNavigationOpen} />
-          <MainWindow tab={tab} tabHistory={tabHistory} onChange={backButtonChange}/>
+          <MainWindow tab={tab} tabHistory={tabHistory} onChange={backButtonChange} onButtonClick={navigationChange}/>
       </main>
       <Button className={"navigation-button"} onClick={navigationButtonAction}><img src={navButton} alt="кнопка навигиции"></img></Button>
     </>

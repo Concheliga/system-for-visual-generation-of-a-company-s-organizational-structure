@@ -7,9 +7,9 @@ function getGroup(){
     return{
         id: groupId(),
         name: getRandomArrayElement(GROUPS),
-        locationId: getRandomNumber(1, 16),
-        subDivisionId: getRandomNumber(1, 16),
-        divisionId: getRandomNumber(1, 16)
+        locationId: getRandomNumber(1, 50),
+        subDivisionId: getRandomNumber(1, 50),
+        divisionId: getRandomNumber(1, 50)
     }
 }
 

@@ -10,7 +10,7 @@ function getRandomNumber(min, max) {
   }
   
   function createIdGenerator() {
-    let id = 1;
+    let id = 0;
     return function () {
       id += 1;
       return id;

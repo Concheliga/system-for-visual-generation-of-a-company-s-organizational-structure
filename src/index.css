@@ -145,3 +145,7 @@ body div{
 .navigation-button img{
   width: 30px;
 }
+
+.hidden{
+  display: none;
+}

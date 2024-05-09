@@ -12,6 +12,7 @@ import GroupList from './GroupList'
 import PostList from './PostList'
 import Button from './Button'
 import NameList from './NameList'
+import { useState } from 'react'
 
 export default function MainWindow({ tab, tabHistory, onChange }){
     const locationModel = new LocationModel()
@@ -20,16 +21,21 @@ export default function MainWindow({ tab, tabHistory, onChange }){
     const groupModel = new GroupModel()
     const postModel = new PostModel()
     const nameModel = new NameModel()
+    const [locationId, setLocationId] = useState(null)
+    const [subDivisionId, setSubDivisionId] = useState(null)
+    const [divisionId, setDivisionId] = useState(null)
+    const [groupId, setGroupId] = useState(null)
+    const [postId, setPostId] = useState(null)
 
     return(
         <section className="main-window-section">
             <h1 className="path-header">Путь:</h1>
-            {tab === "LocationList" && (<LocationList locationModel={locationModel} />)}
-            {tab === "SubDivisionList" && (<SubDivisionList subDivisionModel={subDivisionModel} />)}
-            {tab === "DivisionList" && (<DivisionList divisionModel={divisionModel} />)}
-            {tab === "GroupList" && (<GroupList groupModel={groupModel} />)}
-            {tab === "PostList" && (<PostList postModel={postModel} />)}
-            {tab === "NameList" && (<NameList nameModel={nameModel} />)}
+            {tab === "LocationList" && (<LocationList locationModel={locationModel} setLocationId={setLocationId} />)}
+            {tab === "SubDivisionList" && (<SubDivisionList subDivisionModel={subDivisionModel} locationId={locationId} setSubDivisionId={setSubDivisionId} />)}
+            {tab === "DivisionList" && (<DivisionList divisionModel={divisionModel} subDivisionId={subDivisionId} setDivisionId={setDivisionId} />)}
+            {tab === "GroupList" && (<GroupList groupModel={groupModel} divisionId={divisionId} setGroupId={setGroupId} />)}
+            {tab === "PostList" && (<PostList postModel={postModel} groupId={groupId} setPostId={setPostId} />)}
+            {tab === "NameList" && (<NameList nameModel={nameModel} postId={postId} />)}
             <Button onClick={()=>onChange(tabHistory)}><img src={arrow} alt="Стрелка назад" /></Button>
         </section>
     )

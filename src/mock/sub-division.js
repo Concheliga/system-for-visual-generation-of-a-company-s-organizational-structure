@@ -1,13 +1,13 @@
 import { SUBDIVISIONS} from "../const";
-import { createIdGenerator, getRandomArrayElement } from "../utils";
+import { createIdGenerator, getRandomArrayElement, getRandomNumber } from "../utils";
 
 const subDivisionId = createIdGenerator();
 
-function getSubDivision(location){
+function getSubDivision(){
     return{
         id: subDivisionId(),
         name: getRandomArrayElement(SUBDIVISIONS),
-        location: location
+        locationId: getRandomNumber(1, 16)
     }
 }
 

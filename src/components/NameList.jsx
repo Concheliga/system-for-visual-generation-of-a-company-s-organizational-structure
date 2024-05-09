@@ -1,8 +1,6 @@
 import Button from "./Button";
-import NameModel from "../models/name-model";
 
-export default function NameList() {
-    let nameModel = new NameModel();
+export default function NameList({nameModel}) {
     let names = nameModel.names
     let nameList = names.map((name)=><li className="subdivision" key={name.id}><Button>{name.name}</Button></li>)
     return (

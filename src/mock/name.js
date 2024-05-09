@@ -2,15 +2,15 @@ import { createIdGenerator, getRandomNumber } from "../utils";
 
 const nameId = createIdGenerator();
 
-function getName(location, subDivision, division, group, post){
+function getName(){
     return{
         id: nameId(),
         name: "Сотрудник брусники " + getRandomNumber(1, 1500).toString(),
-        location: location,
-        subDivision: subDivision,
-        division: division,
-        group: group,
-        post: post
+        locationId: getRandomNumber(1, 16),
+        subDivisionId: getRandomNumber(1, 16),
+        divisionId: getRandomNumber(1, 16),
+        groupId: getRandomNumber(1, 16),
+        postId: getRandomNumber(1, 16)
     }
 }
 

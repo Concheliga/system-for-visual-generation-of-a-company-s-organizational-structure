@@ -1,16 +1,16 @@
 import { POSTS } from "../const";
-import { createIdGenerator, getRandomArrayElement } from "../utils";
+import { createIdGenerator, getRandomArrayElement, getRandomNumber } from "../utils";
 
 const postId = createIdGenerator();
 
-function getPost(location, subDivision, division, group){
+function getPost(){
     return{
         id: postId(),
         name: getRandomArrayElement(POSTS),
-        location: location,
-        subDivision: subDivision,
-        division: division,
-        group: group
+        locationId: getRandomNumber(1, 16),
+        subDivisionId: getRandomNumber(1, 16),
+        divisionId: getRandomNumber(1, 16),
+        groupId: getRandomNumber(1, 16)
     }
 }
 

@@ -1,8 +1,6 @@
 import Button from "./Button";
-import DivisionModel from "../models/division-model";
 
-export default function DivisionList() {
-    let divisionModel = new DivisionModel();
+export default function DivisionList({divisionModel}) {
     let divisions = divisionModel.divisions
     let divisionList = divisions.map((division)=><li className="subdivision" key={division.id}><Button>{division.name}</Button></li>)
     return (

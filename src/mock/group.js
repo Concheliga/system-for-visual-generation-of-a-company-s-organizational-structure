@@ -1,15 +1,15 @@
 import { GROUPS } from "../const";
-import { createIdGenerator, getRandomArrayElement } from "../utils";
+import { createIdGenerator, getRandomArrayElement, getRandomNumber } from "../utils";
 
 const groupId = createIdGenerator();
 
-function getGroup(location, subDivision, division){
+function getGroup(){
     return{
         id: groupId(),
         name: getRandomArrayElement(GROUPS),
-        location: location,
-        subDivision: subDivision,
-        division: division
+        locationId: getRandomNumber(1, 16),
+        subDivisionId: getRandomNumber(1, 16),
+        divisionId: getRandomNumber(1, 16)
     }
 }
 

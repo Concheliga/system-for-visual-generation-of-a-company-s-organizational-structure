@@ -14,13 +14,14 @@ import Button from './Button'
 import NameList from './NameList'
 import { useState } from 'react'
 
+const locationModel = new LocationModel()
+const subDivisionModel = new SubDivisionModel()
+const divisionModel = new DivisionModel()
+const groupModel = new GroupModel()
+const postModel = new PostModel()
+const nameModel = new NameModel()
+
 export default function MainWindow({ tab, tabHistory, onChange }){
-    const locationModel = new LocationModel()
-    const subDivisionModel = new SubDivisionModel()
-    const divisionModel = new DivisionModel()
-    const groupModel = new GroupModel()
-    const postModel = new PostModel()
-    const nameModel = new NameModel()
     const [locationId, setLocationId] = useState(null)
     const [subDivisionId, setSubDivisionId] = useState(null)
     const [divisionId, setDivisionId] = useState(null)

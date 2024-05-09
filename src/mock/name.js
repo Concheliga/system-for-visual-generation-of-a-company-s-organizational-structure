@@ -1,17 +1,16 @@
-import { SUBDIVISIONS, LOCATIONS, DIVISIONS, GROUPS, POSTS } from "../const";
-import { createIdGenerator, getRandomArrayElement, getRandomNumber } from "../utils";
+import { createIdGenerator, getRandomNumber } from "../utils";
 
 const nameId = createIdGenerator();
 
-function getName(){
+function getName(location, subDivision, division, group, post){
     return{
         id: nameId(),
         name: "Сотрудник брусники " + getRandomNumber(1, 1500).toString(),
-        location: getRandomArrayElement(LOCATIONS),
-        subDivision: getRandomArrayElement(SUBDIVISIONS),
-        division: getRandomArrayElement(DIVISIONS),
-        group: getRandomArrayElement(GROUPS),
-        post: getRandomArrayElement(POSTS)
+        location: location,
+        subDivision: subDivision,
+        division: division,
+        group: group,
+        post: post
     }
 }
 

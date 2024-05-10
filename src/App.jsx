@@ -13,8 +13,13 @@ export default function App() {
     isNavigationOpen?setIsNavigationOpen(false):setIsNavigationOpen(true)
   }
 
-  function backButtonChange(tabHistory){
+  function backButtonChange(tabHistory, setLocationId, setSubDivisionId, setDivisionId, setGroupId, setPostId){
     if (tabHistory.length >= 2){
+      if(tabHistory[tabHistory.length - 2] === "LocationList") setLocationId(null)
+      if(tabHistory[tabHistory.length - 2] === "SubDivisionList") setSubDivisionId(null)
+      if(tabHistory[tabHistory.length - 2] === "DivisionList") setDivisionId(null)
+      if(tabHistory[tabHistory.length - 2] === "GroupList") setGroupId(null)
+      if(tabHistory[tabHistory.length - 2] === "PostList") setPostId(null)
       setTab(tabHistory[tabHistory.length - 2])
       setTabHistory(tabHistory.slice(0, tabHistory.length - 1))
     }

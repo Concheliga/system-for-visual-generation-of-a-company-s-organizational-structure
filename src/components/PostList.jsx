@@ -7,7 +7,7 @@ export default function PostList({postModel, groupId, setPostId, locationId, sub
     && (post.subDivisionId === subDivisionId || subDivisionId === null) && (post.divisionId === divisionId || divisionId === null))
     .map((post)=><li className="subdivision" key={post.id}>
         <Button onClick={()=>{
-            onButtonClick("PostList", tabHistory)
+            onButtonClick("NameList", tabHistory)
             return setPostId(post.id)
         }}>{post.name}</Button>
     </li>)

@@ -37,7 +37,7 @@ export default function MainWindow({ tab, tabHistory, onChange, onButtonClick })
             {tab === "GroupList" && (<GroupList groupModel={groupModel} divisionId={divisionId} setGroupId={setGroupId} locationId={locationId} subDivisionId={subDivisionId} onButtonClick={onButtonClick} tabHistory={tabHistory} />)}
             {tab === "PostList" && (<PostList postModel={postModel} groupId={groupId} setPostId={setPostId} locationId={locationId} subDivisionId={subDivisionId} divisionId={divisionId} onButtonClick={onButtonClick} tabHistory={tabHistory} />)}
             {tab === "NameList" && (<NameList nameModel={nameModel} postId={postId} locationId={locationId} subDivisionId={subDivisionId} divisionId={divisionId} groupId={groupId} />)}
-            <Button onClick={()=>onChange(tabHistory)}><img src={arrow} alt="Стрелка назад" /></Button>
+            <Button onClick={()=>onChange(tabHistory, setLocationId, setSubDivisionId, setDivisionId, setGroupId, setPostId)}><img src={arrow} alt="Стрелка назад" /></Button>
         </section>
     )
 }

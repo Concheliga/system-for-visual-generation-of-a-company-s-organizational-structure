@@ -27,10 +27,19 @@ export default function MainWindow({ tab, tabHistory, onChange, onButtonClick })
     const [divisionId, setDivisionId] = useState(null)
     const [groupId, setGroupId] = useState(null)
     const [postId, setPostId] = useState(null)
+    function getPath(){
+        let path = ""
+        for (const location of locationModel.locations) if (locationId === location.id) path += "/" + location.name
+        for (const subDivision of subDivisionModel.subDivisions) if (subDivisionId === subDivision.id) path += "/" + subDivision.name
+        for (const division of divisionModel.divisions) if (divisionId === division.id) path += "/" + division.name
+        for (const group of groupModel.groups) if (groupId === group.id) path += "/" + group.name
+        for (const post of postModel.posts) if (postId === post.id) path += "/" + post.name
+        return path
+    }
 
     return(
         <section className="main-window-section">
-            <h1 className="path-header">Путь:</h1>
+            <h1 className="path-header">Путь:{getPath()}</h1>
             {tab === "LocationList" && (<LocationList locationModel={locationModel} setLocationId={setLocationId} onButtonClick={onButtonClick} tabHistory={tabHistory} />)}
             {tab === "SubDivisionList" && (<SubDivisionList subDivisionModel={subDivisionModel} locationId={locationId} setSubDivisionId={setSubDivisionId} onButtonClick={onButtonClick} tabHistory={tabHistory} />)}
             {tab === "DivisionList" && (<DivisionList divisionModel={divisionModel} subDivisionId={subDivisionId} setDivisionId={setDivisionId} locationId={locationId} onButtonClick={onButtonClick} tabHistory={tabHistory} />)}

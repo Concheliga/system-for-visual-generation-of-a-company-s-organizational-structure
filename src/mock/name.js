@@ -10,7 +10,8 @@ function getName(){
         subDivisionId: getRandomNumber(1, 20),
         divisionId: getRandomNumber(1, 40),
         groupId: getRandomNumber(1, 60),
-        postId: getRandomNumber(1, 60)
+        postId: getRandomNumber(1, 60),
+        workTypeId: getRandomNumber(1, 4)
     }
 }
 

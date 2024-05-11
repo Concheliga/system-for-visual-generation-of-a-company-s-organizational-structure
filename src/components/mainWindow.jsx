@@ -21,12 +21,8 @@ const groupModel = new GroupModel()
 const postModel = new PostModel()
 const nameModel = new NameModel()
 
-export default function MainWindow({ tab, tabHistory, onChange, onButtonClick }){
-    const [locationId, setLocationId] = useState(null)
-    const [subDivisionId, setSubDivisionId] = useState(null)
-    const [divisionId, setDivisionId] = useState(null)
-    const [groupId, setGroupId] = useState(null)
-    const [postId, setPostId] = useState(null)
+export default function MainWindow({ tab, tabHistory, onChange, onButtonClick, locationId, setLocationId, subDivisionId, setSubDivisionId, divisionId, setDivisionId,
+    groupId, setGroupId, postId, setPostId }){
     function getPath(){
         let path = ""
         for (const location of locationModel.locations) if (locationId === location.id) path += "/" + location.name

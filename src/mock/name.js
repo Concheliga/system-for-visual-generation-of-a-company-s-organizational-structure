@@ -6,11 +6,11 @@ function getName(){
     return{
         id: nameId(),
         name: "Сотрудник брусники " + getRandomNumber(1, 1500).toString(),
-        locationId: getRandomNumber(1, 50),
-        subDivisionId: getRandomNumber(1, 50),
-        divisionId: getRandomNumber(1, 50),
-        groupId: getRandomNumber(1, 50),
-        postId: getRandomNumber(1, 50)
+        locationId: getRandomNumber(1, 10),
+        subDivisionId: getRandomNumber(1, 20),
+        divisionId: getRandomNumber(1, 40),
+        groupId: getRandomNumber(1, 60),
+        postId: getRandomNumber(1, 60)
     }
 }
 

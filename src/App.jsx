@@ -8,6 +8,11 @@ export default function App() {
   const [tab, setTab] = useState("LocationList")
   const [tabHistory, setTabHistory] = useState(["LocationList"])
   const [isNavigationOpen, setIsNavigationOpen] = useState(false)
+  const [locationId, setLocationId] = useState(null)
+  const [subDivisionId, setSubDivisionId] = useState(null)
+  const [divisionId, setDivisionId] = useState(null)
+  const [groupId, setGroupId] = useState(null)
+  const [postId, setPostId] = useState(null)
 
   function navigationButtonAction(){
     isNavigationOpen?setIsNavigationOpen(false):setIsNavigationOpen(true)
@@ -34,8 +39,12 @@ export default function App() {
   return (
     <>
       <main>
-          <Navigation tabHistory={tabHistory} onChange={navigationChange} open={isNavigationOpen} />
-          <MainWindow tab={tab} tabHistory={tabHistory} onChange={backButtonChange} onButtonClick={navigationChange}/>
+          <Navigation tabHistory={tabHistory} onChange={navigationChange} open={isNavigationOpen} locationId={locationId} setLocationId={setLocationId} 
+          subDivisionId={subDivisionId} setSubDivisionId={setSubDivisionId} divisionId={divisionId} setDivisionId={setDivisionId} groupId={groupId} 
+          setGroupId={setGroupId} postId={postId} setPostId={setPostId} />
+          <MainWindow tab={tab} tabHistory={tabHistory} onChange={backButtonChange} onButtonClick={navigationChange} locationId={locationId} setLocationId={setLocationId} 
+          subDivisionId={subDivisionId} setSubDivisionId={setSubDivisionId} divisionId={divisionId} setDivisionId={setDivisionId} groupId={groupId} 
+          setGroupId={setGroupId} postId={postId} setPostId={setPostId}/>
       </main>
       <Button className={"navigation-button"} onClick={navigationButtonAction}><img src={navButton} alt="кнопка навигиции"></img></Button>
     </>

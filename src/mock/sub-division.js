@@ -7,7 +7,7 @@ function getSubDivision(){
     return{
         id: subDivisionId(),
         name: getRandomArrayElement(SUBDIVISIONS),
-        locationId: getRandomNumber(1, 50)
+        locationId: getRandomNumber(1, 10)
     }
 }
 

@@ -7,8 +7,8 @@ function getDivision(){
     return{
         id: divisionId(),
         name: getRandomArrayElement(DIVISIONS),
-        locationId: getRandomNumber(1, 50),
-        subDivisionId: getRandomNumber(1, 50)
+        locationId: getRandomNumber(1, 10),
+        subDivisionId: getRandomNumber(1, 20)
     }
 }
 

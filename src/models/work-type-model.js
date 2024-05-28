@@ -1,7 +1,7 @@
-import {getWorkType} from "../mock/work-type";
+import {getName} from "../mock/name";
 
 export default class WorkTypeModel{
-    #types = Array.from({length: 4}, getWorkType);
+    #types = Array.from(getName(), (element)=>element.workTypeName)
 
     get types(){
         return this.#types;

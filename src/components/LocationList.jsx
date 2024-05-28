@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-export default function LocationList({ locationModel, setLocationId, onButtonClick, tabHistory }) {
+export default function LocationList({ locationModel, setLocationId, onButtonClick, tabHistory, setNameCount }) {
     let locations = locationModel.locations
     let locationList = locations.map((location)=><li className="subdivision" key={location.id}>
         <Button onClick={()=>{

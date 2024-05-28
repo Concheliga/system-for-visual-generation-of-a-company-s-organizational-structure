@@ -3,7 +3,7 @@ import Button from "./Button";
 export default function SubDivisionList({subDivisionModel, locationId, setSubDivisionId, onButtonClick, tabHistory}) {
     let subDivisions = subDivisionModel.subDivisions
     let subDivisionList = subDivisions
-    .filter((subDivision)=>(subDivision.locationId === locationId) || (locationId === null))
+    .filter((subDivision)=>(subDivision.locationsId.includes(locationId)) || (locationId === null))
     .map((subDivision)=><li className="subdivision" key={subDivision.id}>
     <Button onClick={()=>{
             onButtonClick("DivisionList", tabHistory)

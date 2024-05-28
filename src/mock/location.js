@@ -1,13 +1,20 @@
 import { LOCATIONS } from "../const";
-import { createIdGenerator, getRandomArrayElement } from "../utils";
+import { createIdGenerator} from "../utils";
 
 const locationId = createIdGenerator();
 
-function getLocation(){
-    return {
+function getLocations(){
+    let locations = [{
         id: locationId(),
-        name: getRandomArrayElement(LOCATIONS)
-    };
+        name:'Все локации'
+    }];
+    for (let i = 0; i < LOCATIONS.length; i++){
+        locations.push({
+            id: locationId(),
+            name: LOCATIONS[i]
+        })    
+    }
+    return locations;
 }
 
-export {getLocation};
+export {getLocations};

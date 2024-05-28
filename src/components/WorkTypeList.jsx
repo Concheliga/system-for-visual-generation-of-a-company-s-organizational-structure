@@ -1,19 +1,17 @@
 import Button from "./Button";
 
-export default function PostList({workTypeModel, setWorkTypeId, postId, groupId, locationId, subDivisionId, divisionId, onButtonClick, tabHistory}) {
-    let types = workTypeModel.types
-    let typeList = types
-    .filter((type)=>(type.postId === postId || groupId === null) && (type.groupId === groupId || groupId === null) && (type.locationId === locationId || locationId === null)
-    && (type.subDivisionId === subDivisionId || subDivisionId === null) && (type.divisionId === divisionId || divisionId === null))
-    .map((type)=><li className="subdivision" key={type.id}>
-        <Button onClick={()=>{
-            onButtonClick("NameList", tabHistory)
-            return setWorkTypeId(type.id)
-        }}>{type.name}</Button>
+export default function WorkTypeList({ nameModel, groupId, locationId, subDivisionId, divisionId }) {
+    let names = nameModel.names
+    let WorkTypeList = names
+    .filter((name)=>(name.locationsId.includes(locationId) || locationId === null)
+    && (name.subDivisionsId.includes(subDivisionId) || subDivisionId === null) && (name.divisionsId.includes(divisionId) || divisionId === null)
+    && (name.groupsId.includes(groupId) || groupId === null))
+    .map((name)=><li className="subdivision" key={name.id}>
+        <Button>{name.workTypeName}</Button>
     </li>)
     return (
         <ul className="main-window">
-            {typeList}
+            {WorkTypeList}
         </ul>
     )
 }

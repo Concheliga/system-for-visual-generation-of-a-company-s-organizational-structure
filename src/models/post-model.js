@@ -1,7 +1,7 @@
-import {getPost} from "../mock/post";
+import { getName } from "../mock/name";
 
 export default class PostModel{
-    #posts = Array.from({length: 60}, getPost);
+    #posts = Array.from(getName(), (element)=>element.postName);
 
     get posts(){
         return this.#posts;

@@ -1,7 +1,7 @@
-import {getLocation} from "../mock/location";
+import {getLocations} from "../mock/location";
 
 export default class LocationModel{
-    #locations = Array.from({length: 10}, getLocation);
+    #locations = getLocations();
 
     get locations(){
         return this.#locations;

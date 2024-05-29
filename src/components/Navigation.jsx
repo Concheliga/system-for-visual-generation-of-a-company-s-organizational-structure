@@ -1,8 +1,8 @@
 import Button from "./Button"
 
 export default function Navigation({ children, onChange, tabHistory, open, setLocationId, setSubDivisionId, setDivisionId,
-    setGroupId, setPostId, setWorkTypeId, tab }){
-    const setIdArray = [setWorkTypeId, setPostId, setGroupId, setDivisionId, setSubDivisionId, setLocationId]
+    setGroupId, tab, setCurrentPostName, setCurrentWorkTypeName }){
+    const setIdArray = [setCurrentWorkTypeName, setCurrentPostName, setGroupId, setDivisionId, setSubDivisionId, setLocationId]
 
     function resetNextIds(setIdArray, setCurrentId){
         for (let setId of setIdArray){
@@ -40,11 +40,11 @@ export default function Navigation({ children, onChange, tabHistory, open, setLo
                         onChange('GroupList', tabHistory)
                     }}>Группа</Button></li>
                     <li className="navigation-item"><Button setClassName={setTabHistory(tab, "PostList")} onClick={()=>{
-                        resetNextIds(setIdArray, setPostId)
+                        resetNextIds(setIdArray, setCurrentPostName)
                         onChange('PostList', tabHistory)
                     }}>Должность</Button></li>
                     <li className="navigation-item"><Button setClassName={setTabHistory(tab, "WorkTypeList")} onClick={()=>{
-                        resetNextIds(setIdArray, setWorkTypeId)
+                        resetNextIds(setIdArray, setCurrentWorkTypeName)
                         onChange('WorkTypeList', tabHistory)
                     }}>Тип работы</Button></li>
                     <li className="navigation-item"><Button setClassName={setTabHistory(tab, "NameList")} className={"last"} onClick={()=>onChange('NameList', tabHistory)}>ФИО</Button></li>

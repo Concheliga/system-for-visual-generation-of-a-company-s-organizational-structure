@@ -25,14 +25,16 @@ const nameModel = new NameModel()
 const workTypeModel = new WorkTypeModel()
 
 export default function MainWindow({ tab, tabHistory, onChange, onButtonClick, locationId, setLocationId, subDivisionId, setSubDivisionId, divisionId, setDivisionId,
-    groupId, setGroupId, postId, setPostId, workTypeId, setWorkTypeId }){
+    groupId, setGroupId, postId, setPostId, workTypeId, setWorkTypeId, currentPostName, setCurrentPostName, currentWorkTypeName, setCurrentWorkTypeName }){
     const [nameCount, setNameCount] = useState(nameModel.names.length)
+
     useEffect(()=>{
         setNameCount(nameModel.names
             .filter((name)=>(name.locationsId.includes(locationId) || locationId === null)
             && (name.subDivisionsId.includes(subDivisionId) || subDivisionId === null) && (name.divisionsId.includes(divisionId) || divisionId === null)
-            && (name.groupsId.includes(groupId) || groupId === null)).length)
-    }, [locationId, subDivisionId, divisionId, groupId])
+            && (name.groupsId.includes(groupId) || groupId === null) && (name.postName === currentPostName || currentPostName === null)
+            && (name.workTypeName === currentWorkTypeName || currentWorkTypeName === null)).length)
+    }, [locationId, subDivisionId, divisionId, groupId, currentPostName, currentWorkTypeName])
     
     function getPath(){
         let path = ""
@@ -40,8 +42,14 @@ export default function MainWindow({ tab, tabHistory, onChange, onButtonClick, l
         for (const subDivision of subDivisionModel.subDivisions) if (subDivisionId === subDivision.id && subDivisionId != 1) path += "/" + subDivision.name
         for (const division of divisionModel.divisions) if (divisionId === division.id && divisionId != 1) path += "/" + division.name
         for (const group of groupModel.groups) if (groupId === group.id && groupId != 1) path += "/" + group.name
-        for (const post of postModel.posts) if (postId === post.id && postId != 1) path += "/" + post.name
-        for (const type of workTypeModel.types) if (workTypeId === type.id && workTypeId != 1) path += "/" + type.name
+        for (const name of nameModel.names) if (currentPostName === name.postName) {
+            path += "/" + name.postName;
+            break;
+        }
+        for (const name of nameModel.names) if (currentWorkTypeName === name.workTypeName) {
+            path += "/" + name.workTypeName;
+            break;
+        }
         return path
     }
 
@@ -53,10 +61,10 @@ export default function MainWindow({ tab, tabHistory, onChange, onButtonClick, l
             {tab === "SubDivisionList" && (<SubDivisionList subDivisionModel={subDivisionModel} locationId={locationId} setSubDivisionId={setSubDivisionId} onButtonClick={onButtonClick} tabHistory={tabHistory} />)}
             {tab === "DivisionList" && (<DivisionList divisionModel={divisionModel} subDivisionId={subDivisionId} setDivisionId={setDivisionId} locationId={locationId} onButtonClick={onButtonClick} tabHistory={tabHistory} />)}
             {tab === "GroupList" && (<GroupList groupModel={groupModel} divisionId={divisionId} setGroupId={setGroupId} locationId={locationId} subDivisionId={subDivisionId} onButtonClick={onButtonClick} tabHistory={tabHistory} />)}
-            {tab === "PostList" && (<PostList nameModel={nameModel} groupId={groupId} locationId={locationId} subDivisionId={subDivisionId} divisionId={divisionId} />)}
-            {tab === "WorkTypeList" && (<WorkTypeList nameModel={nameModel} groupId={groupId} locationId={locationId} subDivisionId={subDivisionId} divisionId={divisionId} />)}
-            {tab === "NameList" && (<NameList nameModel={nameModel} workTypeId={workTypeId} postId={postId} locationId={locationId} subDivisionId={subDivisionId} divisionId={divisionId} groupId={groupId} setNameCount={setNameCount} />)}
-            <Button onClick={()=>onChange(tabHistory, setLocationId, setSubDivisionId, setDivisionId, setGroupId, setPostId, setWorkTypeId)}><img src={arrow} alt="Стрелка назад" /></Button>
+            {tab === "PostList" && (<PostList nameModel={nameModel} groupId={groupId} locationId={locationId} subDivisionId={subDivisionId} onButtonClick={onButtonClick} tabHistory={tabHistory} divisionId={divisionId} setCurrentPostName={setCurrentPostName} />)}
+            {tab === "WorkTypeList" && (<WorkTypeList nameModel={nameModel} groupId={groupId} locationId={locationId} subDivisionId={subDivisionId} divisionId={divisionId} onButtonClick={onButtonClick} tabHistory={tabHistory} setCurrentWorkTypeName={setCurrentWorkTypeName} currentPostName={currentPostName} />)}
+            {tab === "NameList" && (<NameList nameModel={nameModel} workTypeId={workTypeId} postId={postId} locationId={locationId} subDivisionId={subDivisionId} divisionId={divisionId} groupId={groupId} currentPostName={currentPostName} currentWorkTypeName={currentWorkTypeName} />)}
+            <Button onClick={()=>onChange(tabHistory, setLocationId, setSubDivisionId, setDivisionId, setGroupId, setCurrentPostName, setCurrentWorkTypeName)}><img src={arrow} alt="Стрелка назад" /></Button>
         </section>
     )
 }

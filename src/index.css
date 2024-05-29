@@ -54,13 +54,13 @@ button, .lockation{
   width: 210px;
   border: 2px solid rgba(16, 32, 181, 1);
   border-radius: 50px;
-  height: 90px;
+  height: 110px;
 }
 
 .subdivision button{
   width: 210px;
   border-radius: 50px;
-  height: 90px;
+  height: 110px;
   border: 0;
   font-size: 16px;
   line-height: 19px;

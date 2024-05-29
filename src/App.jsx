@@ -3,6 +3,7 @@ import Navigation from "./components/Navigation"
 import MainWindow from "./components/mainWindow"
 import Button from "./components/Button"
 import navButton from "/navButton.svg"
+import axios from "axios"
 
 export default function App() {
   const [tab, setTab] = useState("LocationList")
@@ -14,6 +15,10 @@ export default function App() {
   const [groupId, setGroupId] = useState(null)
   const [postId, setPostId] = useState(null)
   const [workTypeId, setWorkTypeId] = useState(null)
+
+  const fetchAll = ()=>{
+    axios.get('').then(r=>console.log('r', r));
+  };
 
   function navigationButtonAction(){
     isNavigationOpen?setIsNavigationOpen(false):setIsNavigationOpen(true)
@@ -33,16 +38,16 @@ export default function App() {
   }
 
   function navigationChange(current, tabHistory){
-    tabHistory.push(current)
-    setTabHistory(tabHistory)
-    setTab(current)
+    tabHistory.push(current);
+    setTabHistory(tabHistory);
+    setTab(current);
     }
 
   return (
     <>
       <main>
           <Navigation tabHistory={tabHistory} onChange={navigationChange} open={isNavigationOpen} setLocationId={setLocationId} setSubDivisionId={setSubDivisionId} 
-          setDivisionId={setDivisionId} setGroupId={setGroupId} setPostId={setPostId} setWorkTypeId={setWorkTypeId} />
+          setDivisionId={setDivisionId} setGroupId={setGroupId} setPostId={setPostId} setWorkTypeId={setWorkTypeId} tab={tab} />
           <MainWindow tab={tab} tabHistory={tabHistory} onChange={backButtonChange} onButtonClick={navigationChange} locationId={locationId} setLocationId={setLocationId} 
           subDivisionId={subDivisionId} setSubDivisionId={setSubDivisionId} divisionId={divisionId} setDivisionId={setDivisionId} groupId={groupId} 
           setGroupId={setGroupId} postId={postId} setPostId={setPostId} workTypeId={workTypeId} setWorkTypeId={setWorkTypeId} />

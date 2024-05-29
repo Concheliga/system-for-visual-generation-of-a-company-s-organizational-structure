@@ -149,3 +149,21 @@ body div{
 .hidden{
   display: none;
 }
+
+.first{
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.last{
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.active{
+  background-color: #9690D8;
+}
+
+.active:hover{
+  background-color: #6e63e4;
+}
